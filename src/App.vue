@@ -3,8 +3,8 @@
     <v-navigation-drawer v-model="drawer" app>
       <v-list-item>
         <v-list-item-content>
-          <v-list-item-title class="text-h6"> Application </v-list-item-title>
-          <v-list-item-subtitle> subtext </v-list-item-subtitle>
+          <v-list-item-title class="text-h6"> The Nav </v-list-item-title>
+          <v-list-item-subtitle> Where to you want to go </v-list-item-subtitle>
         </v-list-item-content>
       </v-list-item>
 
@@ -22,11 +22,40 @@
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
+    <v-app-bar-nav-icon ></v-app-bar-nav-icon>
 
-    <v-app-bar app>
-      <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
+    <v-app-bar
+      app
+      color="#fcb69f"
+      dark
+      prominent
+      @click="drawer = !drawer"
+      src="./assets/road.jpg"
+    >
+      <template v-slot:img="{ props }">
+        <v-img
+          v-bind="props"
+          gradient="to top right, rgba(19,84,122,.5), rgba(128,208,199,.8)"
+        ></v-img>
+      </template>
 
-      <v-toolbar-title>Rb Todo</v-toolbar-title>
+      <v-app-bar-nav-icon></v-app-bar-nav-icon>
+
+      <v-app-bar-title>Title</v-app-bar-title>
+
+      <v-spacer></v-spacer>
+
+      <v-btn icon>
+        <v-icon>mdi-magnify</v-icon>
+      </v-btn>
+
+      <v-btn icon>
+        <v-icon>mdi-heart</v-icon>
+      </v-btn>
+
+      <v-btn icon>
+        <v-icon>mdi-dots-vertical</v-icon>
+      </v-btn>
     </v-app-bar>
 
     <v-main>
@@ -41,7 +70,7 @@ export default {
   data: () => ({
     drawer: null,
     items: [
-      { title: "TodoList", icon: "mdi-view-dashboard", to: "/" },
+      { title: "TodoList", icon: "mdi-format-list-checks", to: "/" },
       { title: "About", icon: "mdi-help-box", to: "/about" },
     ],
   }),
