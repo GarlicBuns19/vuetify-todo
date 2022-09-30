@@ -41,7 +41,7 @@
         <v-divider></v-divider>
       </div>
     </div>
-    <div v-else>Nothing tfgvbhjnmk</div>
+    <div v-if="tasks == ''">Nothing tfgvbhjnmk</div>
   </section>
 </template>
 
@@ -50,23 +50,7 @@ export default {
   data() {
     return {
       newTask: "",
-      tasks: [
-        {
-          id: 1,
-          title: "Eat Food",
-          done: false,
-        },
-        {
-          id: 2,
-          title: "Milk",
-          done: false,
-        },
-        {
-          id: 3,
-          title: "Car",
-          done: false,
-        },
-      ],
+      tasks: ''
     };
   },
   methods: {
@@ -76,6 +60,9 @@ export default {
     },
     addTask() {
       let newTask = this.newTask;
+      if(this.tasks == ''){
+        this.tasks = []
+      }
       this.tasks.push({
         id: this.tasks.length + 1,
         title: `${newTask}`,
