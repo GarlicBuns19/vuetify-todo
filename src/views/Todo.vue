@@ -8,12 +8,12 @@
       append-icon="mdi-message-plus-outline"
       hide-details
       clearable
-      @click:append="addTask()"
+      @click:append="addTask(),taskAdded()"
       @keyup.enter="addTask()"
     ></v-text-field>
     <div v-if="tasks">
       <div v-for="task in tasks" :key="task.id">
-        <v-list class="pt-0" flat>
+        <v-list class="pt-0" flat data-aos="fade-down">
           <v-list-item :class="{ 'blue lighten-5': task.done }">
             <template v-slot:default>
               <v-list-item-action>
@@ -41,6 +41,9 @@
         <v-divider></v-divider>
       </div>
     </div>
+    <center>
+      <h1 data-aos="fade-up" id="screenBottom">Task added</h1>
+    </center>
     <div v-if="tasks == ''" class="text-center">
       <div class="mt-16">
         <h3 class="display-1">No tasks</h3>
@@ -55,7 +58,13 @@ export default {
   data() {
     return {
       newTask: "",
-      tasks: "",
+      tasks: [
+        {
+          id: 1,
+          title: `dwaodaiodhawidhawiodhawiodhaidhaiu`,
+          done: false,
+        },
+      ],
     };
   },
   methods: {
@@ -79,7 +88,24 @@ export default {
       console.log(id);
       this.tasks = this.tasks.filter((t) => t.id !== id);
     },
+    taskAdded() {
+      var x = document.getElementById("screenBottom");
+      if (x.style.display = "none") {
+        x.style.display = "block";
+      }
+      if(x.style.display = "block"){
+        setTimeout(function gone(){
+            x.style.display = "none";
+        },1000)
+      } 
+    },
   },
 };
 </script>
+<style scoped>
+  #screenBottom{
+    display: none;
+  }
+</style>
+
 
