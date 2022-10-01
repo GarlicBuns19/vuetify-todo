@@ -33,11 +33,7 @@
               <v-list-item-action>
                 <v-dialog v-model="dialog" persistent max-width="600px">
                   <template v-slot:activator="{ on, attrs }">
-                    <v-btn
-                      icon
-                      v-bind="attrs"
-                      v-on="on"
-                    >
+                    <v-btn icon v-bind="attrs" v-on="on">
                       <v-icon color="primary lighten-1"
                         >mdi-circle-edit-outline</v-icon
                       >
@@ -102,16 +98,15 @@
 export default {
   data() {
     return {
-      dialog : false ,
+      dialog: false,
       newTask: "",
-      tasks: [
-        {
-          id: 1,
-          title: `dwaodaiodhawidhawiodhawiodhaidhaiu`,
-          done: false,
-        },
-      ],
+      tasks: JSON.parse(localStorage.getItem("tasks")) || "",
     };
+  },
+  mounted() {
+    JSON.parse(localStorage.getItem("tasks"))
+      ? JSON.parse(localStorage.getItem("tasks"))
+      : localStorage.setItem("tasks", JSON.stringify(this.tasks));
   },
   methods: {
     todoDone(id) {
@@ -119,23 +114,25 @@ export default {
       task.done = !task.done;
     },
     addTask() {
+      if (this.tasks == "") {
+        this.tasks = [];
+      }
       let newTask = {
         id: this.tasks.length + 1,
         title: `${this.newTask}`,
         done: false,
       };
-      if (this.tasks == "") {
-        this.tasks = [];
-      }
       this.tasks.push(newTask);
+      localStorage.setItem("tasks", JSON.stringify(this.tasks));
       this.newTask = "";
     },
     deleteTodo(id) {
-      console.log(id);
-      this.tasks = this.tasks.filter((t) => t.id !== id);
+        this.tasks = this.tasks.filter((t) => t.id !== id);
+        localStorage.setItem('tasks', JSON.stringify(this.tasks));
     },
     editTodo(id) {
       console.log("This task has just been edited");
+      localStorage.setItem("tasks", JSON.stringify(this.tasks));
       this.dialog = false;
     },
     taskAdded() {
