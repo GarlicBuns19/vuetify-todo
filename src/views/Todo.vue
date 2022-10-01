@@ -41,7 +41,12 @@
         <v-divider></v-divider>
       </div>
     </div>
-    <div v-if="tasks == ''">Nothing tfgvbhjnmk</div>
+    <div v-if="tasks == ''" class="text-center">
+      <div class="mt-16">
+        <h3 class="display-1">No tasks</h3>
+        <v-icon class="black--text">mdi-sticker-check-outline</v-icon>
+      </div>
+    </div>
   </section>
 </template>
 
@@ -50,7 +55,7 @@ export default {
   data() {
     return {
       newTask: "",
-      tasks: ''
+      tasks: "",
     };
   },
   methods: {
@@ -59,15 +64,15 @@ export default {
       task.done = !task.done;
     },
     addTask() {
-      let newTask = this.newTask;
-      if(this.tasks == ''){
-        this.tasks = []
-      }
-      this.tasks.push({
+      let newTask = {
         id: this.tasks.length + 1,
-        title: `${newTask}`,
+        title: `${this.newTask}`,
         done: false,
-      });
+      };
+      if (this.tasks == "") {
+        this.tasks = [];
+      }
+      this.tasks.push(newTask);
       this.newTask = "";
     },
     deleteTodo(id) {
@@ -77,3 +82,4 @@ export default {
   },
 };
 </script>
+
