@@ -4,6 +4,7 @@
       v-model="newTask"
       class="pa-3"
       outlined
+      color="deep-purple accent-4"
       label="Add task"
       append-icon="mdi-message-plus-outline"
       hide-details
@@ -20,7 +21,7 @@
                 <v-checkbox
                   :input-value="task.done"
                   @click="todoDone(task.id)"
-                  color:primary
+                  color:indigo darken-3
                 ></v-checkbox>
               </v-list-item-action>
 
@@ -34,7 +35,7 @@
                 <v-dialog v-model="dialog" persistent max-width="600px">
                   <template v-slot:activator="{ on, attrs }">
                     <v-btn icon v-bind="attrs" v-on="on">
-                      <v-icon color="primary lighten-1"
+                      <v-icon color="indigo darken-3"
                         >mdi-circle-edit-outline</v-icon
                       >
                     </v-btn>
@@ -54,11 +55,11 @@
                     </v-card-text>
                     <v-card-actions>
                       <v-spacer></v-spacer>
-                      <v-btn color="blue darken-1" text @click="dialog = false">
+                      <v-btn color="indigo darken-3" text @click="dialog = false">
                         Close
                       </v-btn>
                       <v-btn
-                        color="blue darken-1"
+                        color="indigo darken-3"
                         @click="editTodo(task.id)"
                         text
                       >
@@ -70,7 +71,7 @@
               </v-list-item-action>
               <v-list-item-action>
                 <v-btn @click="deleteTodo(task.id), taskDel()" icon>
-                  <v-icon color="primary lighten-1">mdi-delete</v-icon>
+                  <v-icon color="indigo darken-3">mdi-delete</v-icon>
                 </v-btn>
               </v-list-item-action>
             </template>
