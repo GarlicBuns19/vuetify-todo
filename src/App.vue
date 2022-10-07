@@ -4,7 +4,7 @@
       <v-list-item>
         <v-list-item-content>
           <v-list-item-title class="text-h6"> The Nav </v-list-item-title>
-          <v-list-item-subtitle> Where to you want to go </v-list-item-subtitle>
+          <v-list-item-subtitle class="black-text"> <strong>Where to you want to go</strong> </v-list-item-subtitle>
         </v-list-item-content>
       </v-list-item>
 
